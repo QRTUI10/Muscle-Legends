@@ -2020,8 +2020,6 @@ end
 
 return library
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/QRTUI10/Muscle-Legends/refs/heads/main/ML%20V2"))()
-
 local Window = library:AddWindow("Muscle Legends V8 | 0Deevv0 Scripts", { 
     main_color = Color3.fromRGB(41, 74, 122),
     min_size = Vector2.new(500, 600),
