@@ -2037,6 +2037,6 @@ local SpeedPunch = KillingTab:AddSwitch("Speed Punch", function(bool)
    
 end)
 
-Killingtab:AddTextBox("Whitelist Player", function(text)
+local WhitelistPlayer = Killingtab:AddTextBox("Whitelist Player", function(text)
    
 end)
