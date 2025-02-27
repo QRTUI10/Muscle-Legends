@@ -33,7 +33,7 @@ local ProtectGui = protectgui or (syn and syn.protect_gui) or function(f) end
 
 local Themes = {
 	Names = {
-		"X5GDS"
+		"X5GS"
 	},
 	X5GS = {
 		Name = "X5GS",
