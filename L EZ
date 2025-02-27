@@ -37,7 +37,7 @@ local Themes = {
 	},
 	X5GS = {
 		Name = "X5GS",
-		Accent = Color3.fromRGB(255, 0, 255), -- Purple Accent
+		Accent = Color3.fromRGB(196, 40, 28), -- Red Accent
 
 		AcrylicMain = Color3.fromRGB(20, 20, 20),
 		AcrylicBorder = Color3.fromRGB(40, 40, 40), 
@@ -45,9 +45,9 @@ local Themes = {
 		AcrylicNoise = 0.8,
 	
 		TitleBarLine = Color3.fromRGB(90, 90, 90),
-		Tab = Color3.fromRGB(180, 0, 255), -- Purple Tab
+		Tab = Color3.fromRGB(196, 40, 28), -- Red Tab
 	
-		Element = Color3.fromRGB(180, 0, 255), -- Purple Element
+		Element = Color3.fromRGB(196, 40, 28), -- Red Element
 		ElementBorder = Color3.fromRGB(50, 50, 50),
 		InElementBorder = Color3.fromRGB(80, 80, 80),
 		ElementTransparency = 0.75,
@@ -59,33 +59,33 @@ local Themes = {
 	
 		DropdownFrame = Color3.fromRGB(30, 30, 30),
 		DropdownHolder = Color3.fromRGB(50, 50, 50),
-		DropdownBorder = Color3.fromRGB(180, 0, 255), -- Purple Dropdown Border
-		DropdownOption = Color3.fromRGB(220, 0, 255), -- Purple Dropdown Option
+		DropdownBorder = Color3.fromRGB(196, 40, 28), -- Red Dropdown Border
+		DropdownOption = Color3.fromRGB(196, 40, 28), -- Red Dropdown Option
 	
 		Keybind = Color3.fromRGB(160, 0, 255), -- Purple Keybind
 	
 		Input = Color3.fromRGB(180, 180, 180),
 		InputFocused = Color3.fromRGB(0, 0, 0),
-		InputIndicator = Color3.fromRGB(255, 50, 255), -- Purple Input Indicator
+		InputIndicator = Color3.fromRGB(196, 40, 28), -- Red Input Indicator
 	
 		Dialog = Color3.fromRGB(30, 30, 30),
 		DialogHolder = Color3.fromRGB(45, 45, 45),
-		DialogHolderLine = Color3.fromRGB(180, 0, 255), -- Purple Dialog Line
+		DialogHolderLine = Color3.fromRGB(196, 40, 28), -- Red Dialog Line
 		DialogButton = Color3.fromRGB(30, 30, 30),
-		DialogButtonBorder = Color3.fromRGB(255, 0, 255), -- Purple Dialog Button Border
+		DialogButtonBorder = Color3.fromRGB(196, 40, 28), -- Red Dialog Button Border
 		DialogBorder = Color3.fromRGB(70, 70, 70),
 		DialogInput = Color3.fromRGB(40, 40, 40),
-		DialogInputLine = Color3.fromRGB(220, 0, 255), -- Purple Dialog Input Line
+		DialogInputLine = Color3.fromRGB(196, 40, 28), -- Red Dialog Input Line
 	
 		Text = Color3.fromRGB(255, 255, 255),
 		SubText = Color3.fromRGB(170, 170, 170),
-		Hover = Color3.fromRGB(220, 0, 255), -- Purple Hover
+		Hover = Color3.fromRGB(196, 40, 28), -- Red Hover
 		HoverChange = 0.08,
 	}    
 }
 
 local Library = {
-	Version = "4.0.0",
+	Version = "1.0.0",
 
 	OpenFrames = {},
 	Options = {},
