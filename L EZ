@@ -33,10 +33,10 @@ local ProtectGui = protectgui or (syn and syn.protect_gui) or function(f) end
 
 local Themes = {
 	Names = {
-		"NovaHub"
+		"X5GDS"
 	},
-	NovaHub = {
-		Name = "NovaHub",
+	X5GS = {
+		Name = "X5GS",
 		Accent = Color3.fromRGB(255, 0, 255), -- Purple Accent
 
 		AcrylicMain = Color3.fromRGB(20, 20, 20),
@@ -137,7 +137,7 @@ local function CloseOpen()
 	Close_ImageButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 	Close_ImageButton.Position = UDim2.new(0.1021, 0, 0.0743, 0)
 	Close_ImageButton.Size = UDim2.new(0, 59, 0, 49)
-	Close_ImageButton.Image = "rbxassetid://134197606812326"
+	Close_ImageButton.Image = "rbxassetid://3606936377"
 	Close_ImageButton.Visible = false
 
 	UICorner.Name = "MainCorner"
