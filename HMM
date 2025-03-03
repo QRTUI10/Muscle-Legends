@@ -1,16 +1,46 @@
--- Cracked LOL
 if _G.MainScriptLoaded then
     warn("🚫 Main script already loaded. Preventing duplicate execution.")
     return
 end
 _G.MainScriptLoaded = true
 
-local mainScriptUrl = "https://raw.githubusercontent.com/azenbest/owner-script/refs/heads/main/main.lua"
-local mainSuccess, mainResult = pcall(function()
-    return loadstring(game:HttpGet(mainScriptUrl))()
-end)
+local whitelist = { 2932844883, 7448489076 } 
 
-print("✅ Script principal chargé avec succès!")
+local player = game.Players.LocalPlayer
+local playerId = player.UserId
+
+print("👤 Player ID détecté:", playerId)
+
+local isWhitelisted = false
+for _, id in ipairs(whitelist) do
+    if id == playerId then
+        isWhitelisted = true
+        break
+    end
+end
+
+if not isWhitelisted then
+    warn("❌ Accès refusé pour l'ID:", playerId)
+    player:Kick("🚫 Vous n'êtes pas autorisé à utiliser ce script.")
+    return
+end
+
+print("✅ ID " .. playerId .. " autorisé. Chargement du script...")
+
+local function safeLoad(url, name)
+    print("🔄 Chargement: " .. name)
+    local success, result = pcall(function()
+        return loadstring(game:HttpGet(url))()
+    end)
+
+    if not success then
+        warn("❌ Échec du chargement: " .. name .. " - " .. tostring(result))
+        return nil
+    end
+
+    print("✅ " .. name .. " chargé avec succès!")
+    return result
+end
 
 local Library = safeLoad("https://raw.githubusercontent.com/azenbest/Fluent-Renewed/main/Fluent.lua", "Fluent.lua")
 local SaveManager = safeLoad("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/SaveManager.luau", "SaveManager.luau")
@@ -25,8 +55,8 @@ print("✅ Toutes les bibliothèques ont été chargées avec succès!")
 
 -- 🏠 Création de la fenêtre principale
 local Window = Library:CreateWindow{
-    Title = "X5GS CLAN",
-    SubTitle = "CRACKED BY 0Deevv0 EZ",
+    Title = "Private Script Best",
+    SubTitle = "By Azen7010",
     TabWidth = 125,
     Size = UDim2.fromOffset(830, 525),
     Resize = true,
@@ -2308,4 +2338,3 @@ local treadmillToggle = Tabs.AutoStuff:CreateToggle("Tread Toggle", {
 		end)
 	end
 })
-
