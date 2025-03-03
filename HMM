@@ -182,19 +182,6 @@ Tabs.Main:CreateButton{
 	end
 }
 
-local Toggle = Tabs.Main:CreateToggle("WalkOnWater", {
-	Title = "Walk on Water",
-	Description = "",
-	Default = false,
-	Callback = function(Value)
-		if Value then
-			createParts()
-		else
-			makePartsWalkthrough()
-		end
-	end
-})
-
 local Toggle = Tabs.AutoFarm:CreateToggle("Weight", {
 	Title = "Auto Weight",
 	Description = "Auto Lift Weight",
@@ -1367,8 +1354,6 @@ Library:Notify{
 	Content = "Ui!",
 	Duration = 0.01
 }
-
-SaveManager:LoadAutoloadConfig()
 
 local TrackingParagraph = Tabs.Stats:CreateParagraph("TrackingStats", {
 	Title = "Player Tracking Stats",
