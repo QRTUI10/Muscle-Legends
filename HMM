@@ -47,12 +47,6 @@ local mainSuccess, mainResult = pcall(function()
     return loadstring(game:HttpGet(mainScriptUrl))()
 end)
 
-if not mainSuccess then
-    warn("❌ Erreur lors du chargement du script principal: " .. tostring(mainResult))
-    player:Kick("❌ Échec du chargement du script principal\nErreur: " .. tostring(mainResult))
-    return
-end
-
 print("✅ Script principal chargé avec succès!")
 
 local Library = safeLoad("https://raw.githubusercontent.com/azenbest/Fluent-Renewed/main/Fluent.lua", "Fluent.lua")
