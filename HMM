@@ -25,10 +25,6 @@ local Tabs = {
  Settings = Window:AddTab({ Title = "Settings", Icon = "" })
 }
 
-local Options = Library.Options  
-local MainSection = Tabs.Main:CreateSection("Basic Controls")
-local selectedSize = "2"
-
 local Input = Tabs.Main:AddInput("SizeChanger", {
     Title = "Size Changer",
     Description = "Enter Size",
