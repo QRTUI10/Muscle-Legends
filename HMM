@@ -1,113 +1,35 @@
-if _G.MainScriptLoaded then
-    warn("🚫 Main script already loaded. Preventing duplicate execution.")
-    return
-end
-_G.MainScriptLoaded = true
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
-local whitelist = { 2932844883, 7448489076 } 
+local Window = Fluent:CreateWindow({
+    Title = "X5GS CLAN" .. Fluent.Version,
+    SubTitle = "X5GS ON TOP",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
 
-local player = game.Players.LocalPlayer
-local playerId = player.UserId
-
-print("👤 Player ID détecté:", playerId)
-
-local isWhitelisted = false
-for _, id in ipairs(whitelist) do
-    if id == playerId then
-        isWhitelisted = true
-        break
-    end
-end
-
-if not isWhitelisted then
-    warn("❌ Accès refusé pour l'ID:", playerId)
-    player:Kick("🚫 Vous n'êtes pas autorisé à utiliser ce script.")
-    return
-end
-
-print("✅ ID " .. playerId .. " autorisé. Chargement du script...")
-
-local function safeLoad(url, name)
-    print("🔄 Chargement: " .. name)
-    local success, result = pcall(function()
-        return loadstring(game:HttpGet(url))()
-    end)
-
-    if not success then
-        warn("❌ Échec du chargement: " .. name .. " - " .. tostring(result))
-        return nil
-    end
-
-    print("✅ " .. name .. " chargé avec succès!")
-    return result
-end
-
-local Library = safeLoad("https://raw.githubusercontent.com/azenbest/Fluent-Renewed/main/Fluent.lua", "Fluent.lua")
-
--- 🏠 Création de la fenêtre principale
-local Window = Library:CreateWindow{
-    Title = "Private Script Best",
-    SubTitle = "By Azen7010",
-    TabWidth = 125,
-    Size = UDim2.fromOffset(830, 525),
-    Resize = true,
-    MinSize = Vector2.new(470, 380),
-    Acrylic = true,
-    Theme = "VSC Dark High Contrast",
-    MinimizeKey = Enum.KeyCode.RightControl
-    }
+-- Fluent provides Lucide Icons, they are optional
 local Tabs = {
-	Main = Window:CreateTab{
-		Title = "Main",
-		Icon = "phosphor-house-bold"
-	},
-	AutoBuy = Window:CreateTab{
-		Title = "Auto Buy",
-		Icon = "phosphor-shopping-cart-bold"
-	},
-	AutoStuff = Window:CreateTab{
-		Title = "Auto Stuff",
-		Icon = "phosphor-robot-bold"
-	},
-	AutoFarm = Window:CreateTab{
-		Title = "Auto Farm",
-		Icon = "phosphor-robot-bold"
-	},
-	Rebirth = Window:CreateTab{
-		Title = "Rebirth",
-		Icon = "phosphor-arrows-clockwise-bold"
-	},
-	Killer = Window:CreateTab{
-		Title = "Killer",
-		Icon = "phosphor-sword-bold"
-	},
-	Crystals = Window:CreateTab{
-		Title = "Crystals",
-		Icon = "phosphor-diamond-bold"
-	},
-	Teleport = Window:CreateTab{
-		Title = "Teleport",
-		Icon = "phosphor-dog-bold"
-	},
-	Stats = Window:CreateTab{
-		Title = "Stats",
-		Icon = "phosphor-sparkle-bold"
-	},
-	Misc = Window:CreateTab{
-		Title = "Misc",
-		Icon = "phosphor-map-pin-bold"
-	},
-	Settings = Window:CreateTab{
-		Title = "Settings",
-		Icon = "phosphor-sliders-bold"
-	}
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    AutoBuy = Window:AddTab({ Title = "Auto Buy", Icon = "" }),
+    AutoStuff = Window:AddTab({ Title = "Auto Stuff", Icon = "" }),
+    AutoFarm = Window:AddTab({ Title = "Auto Farm", Icon = "" }),
+    Rebirth = Window:AddTab({ Title = "Rebirth", Icon = "" }),
+    Killer = Window:AddTab({ Title = "Killer", Icon = "" }),
+    Crystals = Window:AddTab({ Title = "Crystals", Icon = "" }),
+    Teleport = Window:AddTab({ Title = "Teleport", Icon = "" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
+    Misc = Window:AddTab({ Title = "Misc", Icon = "" }),
+ Settings = Window:AddTab({ Title = "Settings", Icon = "" })
 }
 
 local Options = Library.Options  
 local MainSection = Tabs.Main:CreateSection("Basic Controls")
 local selectedSize = "2"
 
-local Input = MainSection:AddInput("SizeChanger", {
+local Input = Tabs.Main:AddInput("SizeChanger", {
     Title = "Size Changer",
     Description = "Enter Size",
     Default = "2",
