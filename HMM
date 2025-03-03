@@ -1,31 +1,75 @@
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+if _G.MainScriptLoaded then
+    warn("🚫 Main script already loaded. Preventing duplicate execution.")
+    return
+end
+_G.MainScriptLoaded = true
 
-local Window = Fluent:CreateWindow({
-    Title = "X5GS CLAN" .. Fluent.Version,
+local Library = safeLoad("https://raw.githubusercontent.com/azenbest/Fluent-Renewed/main/Fluent.lua", "Fluent.lua")
+
+-- 🏠 Création de la fenêtre principale
+local Window = Library:CreateWindow{
+    Title = "X5GS CLAN",
     SubTitle = "X5GS ON TOP",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
-})
-
--- Fluent provides Lucide Icons, they are optional
+    TabWidth = 125,
+    Size = UDim2.fromOffset(830, 525),
+    Resize = true,
+    MinSize = Vector2.new(470, 380),
+    Acrylic = true,
+    Theme = "VSC Dark High Contrast",
+    MinimizeKey = Enum.KeyCode.RightControl
+    }
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    AutoBuy = Window:AddTab({ Title = "Auto Buy", Icon = "" }),
-    AutoStuff = Window:AddTab({ Title = "Auto Stuff", Icon = "" }),
-    AutoFarm = Window:AddTab({ Title = "Auto Farm", Icon = "" }),
-    Rebirth = Window:AddTab({ Title = "Rebirth", Icon = "" }),
-    Killer = Window:AddTab({ Title = "Killer", Icon = "" }),
-    Crystals = Window:AddTab({ Title = "Crystals", Icon = "" }),
-    Teleport = Window:AddTab({ Title = "Teleport", Icon = "" }),
-    Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
-    Misc = Window:AddTab({ Title = "Misc", Icon = "" }),
- Settings = Window:AddTab({ Title = "Settings", Icon = "" })
+	Main = Window:CreateTab{
+		Title = "Main",
+		Icon = "phosphor-house-bold"
+	},
+	AutoBuy = Window:CreateTab{
+		Title = "Auto Buy",
+		Icon = "phosphor-shopping-cart-bold"
+	},
+	AutoStuff = Window:CreateTab{
+		Title = "Auto Stuff",
+		Icon = "phosphor-robot-bold"
+	},
+	AutoFarm = Window:CreateTab{
+		Title = "Auto Farm",
+		Icon = "phosphor-robot-bold"
+	},
+	Rebirth = Window:CreateTab{
+		Title = "Rebirth",
+		Icon = "phosphor-arrows-clockwise-bold"
+	},
+	Killer = Window:CreateTab{
+		Title = "Killer",
+		Icon = "phosphor-sword-bold"
+	},
+	Crystals = Window:CreateTab{
+		Title = "Crystals",
+		Icon = "phosphor-diamond-bold"
+	},
+	Teleport = Window:CreateTab{
+		Title = "Teleport",
+		Icon = "phosphor-dog-bold"
+	},
+	Stats = Window:CreateTab{
+		Title = "Stats",
+		Icon = "phosphor-sparkle-bold"
+	},
+	Misc = Window:CreateTab{
+		Title = "Misc",
+		Icon = "phosphor-map-pin-bold"
+	},
+	Settings = Window:CreateTab{
+		Title = "Settings",
+		Icon = "phosphor-sliders-bold"
+	}
 }
 
-local Input = Tabs.Main:AddInput("SizeChanger", {
+local Options = Library.Options  
+local MainSection = Tabs.Main:CreateSection("Basic Controls")
+local selectedSize = "2"
+
+local Input = MainSection:AddInput("SizeChanger", {
     Title = "Size Changer",
     Description = "Enter Size",
     Default = "2",
@@ -99,6 +143,19 @@ Tabs.Main:CreateButton{
 		end
 	end
 }
+
+local Toggle = Tabs.Main:CreateToggle("WalkOnWater", {
+	Title = "Walk on Water",
+	Description = "",
+	Default = false,
+	Callback = function(Value)
+		if Value then
+			createParts()
+		else
+			makePartsWalkthrough()
+		end
+	end
+})
 
 local Toggle = Tabs.AutoFarm:CreateToggle("Weight", {
 	Title = "Auto Weight",
@@ -1272,6 +1329,8 @@ Library:Notify{
 	Content = "Ui!",
 	Duration = 0.01
 }
+
+SaveManager:LoadAutoloadConfig()
 
 local TrackingParagraph = Tabs.Stats:CreateParagraph("TrackingStats", {
 	Title = "Player Tracking Stats",
